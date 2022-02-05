@@ -26,7 +26,3 @@ spec:
     end: 45 * * * *
     desiredReplicas: {{ .Values.keda.maxReplicaCount | quote }}
 {{- end }}
-
-
-
-	Asia/Jerusalem
