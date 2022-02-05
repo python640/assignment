@@ -12,7 +12,7 @@ fullnameOverride: ""
 serviceAccount:
   create: true
   annotations: {}
-  name:  simple-web
+  name: simple-web
 
 podAnnotations: {}
 
@@ -30,8 +30,7 @@ service:
 
 ingress:
   enabled: true
-  path:
-    - /evgeny
+  path: /evgeny
   labels: {}
   tls: []
 
