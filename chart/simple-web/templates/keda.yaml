@@ -2,12 +2,12 @@
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: {{ include " simple-web.fullname" . }}
+  name: {{ include "simple-web.fullname" . }}
   labels:
-    {{- include " simple-web.labels" . | nindent 4 }}
+    {{- include "simple-web.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
-    name: {{ include " simple-web.fullname" . }}
+    name: {{ include "simple-web.fullname" . }}
   minReplicaCount: {{ .Values.replicaCount }}
   maxReplicaCount: {{ .Values.keda.maxReplicaCount }}
   triggers:
@@ -21,8 +21,8 @@ spec:
       value: {{ .Values.keda.triggers.memory.percent | quote }}
   - type: cron
     metadata:
-      timezone: Asia/Jerusalem
-      start: 30 * * * *
-      end: 45 * * * *
+      timezone: {{ .Values.keda.triggers.cron.timezone }}
+      start: {{ .Values.keda.triggers.cron.start }}
+      end: {{ .Values.keda.triggers.cron.end }}
       desiredReplicas: {{ .Values.keda.maxReplicaCount | quote }}
 {{- end }}

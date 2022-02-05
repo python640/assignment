@@ -12,7 +12,7 @@ fullnameOverride: ""
 serviceAccount:
   create: true
   annotations: {}
-  name: simple-web
+  name:simple-web
 
 podAnnotations: {}
 
@@ -24,7 +24,7 @@ service:
   enabled: true
   type: ClusterIP
   port: 80
-  name:  simple-web
+  name: simple-web
   contextPath: /evgeny
   annotations: {}
 
