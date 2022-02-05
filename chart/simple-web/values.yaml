@@ -1,0 +1,61 @@
+replicaCount: 1
+
+image:
+  repository: acrinterview.azurecr.io/simple-web
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name:  simple-web
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  enabled: true
+  type: ClusterIP
+  port: 80
+  name:  simple-web
+  contextPath: /evgeny
+  annotations: {}
+
+ingress:
+  enabled: true
+  labels: {}
+  hosts:
+    - host: test.test.io
+      paths:
+      - /evgeny
+  tls: []
+
+resources:
+  limits:
+    cpu: 1m
+    memory: 1024Mi
+  requests:
+    cpu: 1m
+    memory: 1024Mi
+
+keda:
+  enabled: true
+  maxReplicaCount: 5
+  triggers:
+    cpu:
+      percent: 50
+    memory:
+      percent: 50
+
+autoscaling: {}
+
+nodeSelector: {}
+
+affinity: {}

@@ -1,0 +1,22 @@
+{{- if .Values.keda.enabled -}}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {{ include " simple-web.fullname" . }}
+  labels:
+    {{- include " simple-web.labels" . | nindent 4 }}
+spec:
+  scaleTargetRef:
+    name: {{ include " simple-web.fullname" . }}
+  minReplicaCount: {{ .Values.replicaCount }}
+  maxReplicaCount: {{ .Values.keda.maxReplicaCount }}
+  triggers:
+  - type: cpu
+    metadata:
+      type: Utilization
+      value: {{ .Values.keda.triggers.cpu.percent }}
+  - type: memory
+    metadata:
+      type: Utilization
+      value: {{ .Values.keda.triggers.memory.percent }}
+{{- end }}
