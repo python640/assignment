@@ -19,4 +19,14 @@ spec:
     metadata:
       type: Utilization
       value: {{ .Values.keda.triggers.memory.percent | quote }}
+- type: cron
+  metadata:
+    timezone: Asia/Jerusalem
+    start: 30 * * * *
+    end: 45 * * * *
+    desiredReplicas: {{ .Values.keda.maxReplicaCount | quote }}
 {{- end }}
+
+
+
+	Asia/Jerusalem
