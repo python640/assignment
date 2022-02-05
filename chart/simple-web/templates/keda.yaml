@@ -14,9 +14,9 @@ spec:
   - type: cpu
     metadata:
       type: Utilization
-      value: {{ .Values.keda.triggers.cpu.percent }}
+      value: {{ .Values.keda.triggers.cpu.percent | quote }}
   - type: memory
     metadata:
       type: Utilization
-      value: {{ .Values.keda.triggers.memory.percent }}
+      value: {{ .Values.keda.triggers.memory.percent | quote }}
 {{- end }}

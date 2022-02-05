@@ -30,11 +30,9 @@ service:
 
 ingress:
   enabled: true
+  path:
+    - /evgeny
   labels: {}
-  hosts:
-    - host: test.test.io
-      paths:
-      - /evgeny
   tls: []
 
 resources:
@@ -50,9 +48,9 @@ keda:
   maxReplicaCount: 5
   triggers:
     cpu:
-      percent: "50"
+      percent: 50
     memory:
-      percent: "50"
+      percent: 50
 
 autoscaling: {}
 
