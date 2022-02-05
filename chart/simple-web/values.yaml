@@ -12,7 +12,7 @@ fullnameOverride: ""
 serviceAccount:
   create: true
   annotations: {}
-  name:simple-web
+  name: simple-web
 
 podAnnotations: {}
 
