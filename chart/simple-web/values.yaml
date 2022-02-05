@@ -50,9 +50,9 @@ keda:
   maxReplicaCount: 5
   triggers:
     cpu:
-      percent: 50
+      percent: "50"
     memory:
-      percent: 50
+      percent: "50"
 
 autoscaling: {}
 
